@@ -9,6 +9,8 @@
                 <v-form class="px-3" ref="form">
                     <v-text-field label="일정" prepend-icon="mdi-folder-marker"
                                   v-model="event.title"></v-text-field>
+                    <v-text-field label="기계 이름" prepend-icon="mdi-folder-marker"
+                                  v-model="event.category"></v-text-field>
                     <v-textarea label="상세설명" prepend-icon="mdi-pencil"
                                 v-model="event.content"></v-textarea>
                     <v-row>

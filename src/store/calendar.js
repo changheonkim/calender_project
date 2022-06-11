@@ -7,7 +7,7 @@ const calendar_data = {
   state: {
     event: initEvent(),
     events: [],
-    categories: ['a', 'b'],
+    categories: [],
   },
   mutations: {
     OPEN_CALENDAR_DIALOG(state, payload) {
@@ -45,6 +45,12 @@ const calendar_data = {
     ADD_EVENT(state, getEvent) {
       const addedEvent = makeEvent(getEvent);
       state.events.push(addedEvent);
+      if(state.categories.length == 0) state.categories.push(addedEvent.category);
+      for(let i = 0; i < state.categories.length; i++){
+        if(state.categories[i] != addedEvent.category){
+          state.categories.push(addedEvent.category);
+        }
+      }
       state.event = initEvent();
     },
     DELETE_EVENT( state, event ){ 
@@ -74,7 +80,7 @@ function makeEvent(event) {
     start: event.startDate + getTime(event.startTime),
     end: event.endDate + getTime(event.endTime),
     color: event.colors[Math.floor(Math.random() * 6)],
-    category: 'a',
+    category: event.category,
     }
   }
   function initEvent() {

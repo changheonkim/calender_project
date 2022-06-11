@@ -71,7 +71,6 @@
               rounded
               color="primary"
               dark
-              @click="open({ date:focus })"
             >
               홈으로
             </v-btn>

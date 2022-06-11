@@ -81,7 +81,6 @@
               rounded
               color="primary"
               dark
-              @click="open({ date:focus })"
             >
               기계 분류
             </v-btn>
