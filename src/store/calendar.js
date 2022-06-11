@@ -22,6 +22,7 @@ const calendar_data = {
     EDIT_CALENDAR_DIALOG(state, edit_event) {
       state.event.id = edit_event.id;
       state.event.title = edit_event.name;
+      state.event.category = edit_event.category;
       state.event.content = edit_event.content;
     },
     EDIT_EVENT(state, editEvent) {
