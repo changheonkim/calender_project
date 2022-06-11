@@ -22,17 +22,7 @@
                 </v-icon>
               </v-btn>
             </template>
-            <v-list>
-              <v-list-item @click="type = 'day'">
-                <v-list-item-title>Day</v-list-item-title>
-              </v-list-item>
-              <v-list-item @click="type = 'week'">
-                <v-list-item-title>Week</v-list-item-title>
-              </v-list-item>
-              <v-list-item @click="type = 'month'">
-                <v-list-item-title>Month</v-list-item-title>
-              </v-list-item>
-            </v-list>
+      
           </v-menu>
           <v-btn
             fab
@@ -74,16 +64,16 @@
           </router-link>
           </div>
         </template>
-                  <template>
+        <template>
           <div class="text-center">
-          <router-link to="/category">
+          <router-link to="/">
           <v-btn
               rounded
               color="primary"
               dark
               @click="open({ date:focus })"
             >
-              기계 분류
+              홈으로
             </v-btn>
           </router-link>
           </div>
@@ -99,6 +89,8 @@
           :events="events"
           :event-color="getEventColor"
           :type="type"
+          category-show-all
+          :categories="categories"
           @click:date="open"
           @click:event="showEvent"
           @mousedown:event="startDrag"
@@ -167,12 +159,7 @@ import moment from 'moment';
     data: () => ({
       moment:moment,
       focus: '',
-      type: 'month',
-      typeToLabel: {
-        month: 'Month',
-        week: 'Week',
-        day:'Day',
-      },
+      type: 'category',
       selectedEvent: {},
       selectedElement: null,
       selectedOpen: false,
@@ -281,10 +268,10 @@ import moment from 'moment';
         computed: {
         events() {
             return this.$store.state.calendar_data.events;
-            }
-        },
+            },
         categories() {
             return this.$store.state.calendar_data.categories; 
+          }
         },
         created() {
             this.focus = this.$moment().format('YYYY-MM-DD');

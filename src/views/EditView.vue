@@ -1,7 +1,7 @@
 <template>
       <v-card>
             <v-card-title>
-                <h3>일정 추가</h3>
+                <h3>일정 편집</h3>
                 <v-spacer/>
             </v-card-title>
             <v-card-text>
@@ -99,12 +99,12 @@
                     <div class="text-center">
                        <router-link to="/">
                         <v-btn @click="submit" class="primary white--text mx-2 mt-3" text>
-                            추가
+                            변경
                         </v-btn>
                         </router-link>
                         <router-link to="/">
                           <v-btn class="primary white--text mx-2 mt-3" text>
-                            닫기
+                            취소
                         </v-btn>
                         </router-link>
                     </div>
@@ -123,7 +123,7 @@
                 ],
                 endDateRules: [
                     v => v.search(/\d{4}-\d{2}-\d{2}/) === 0 || '종료일을 지정해주세요.'
-                ],
+                ]
             }
         },
         computed: {
@@ -133,7 +133,7 @@
         },
         methods: {
             submit() {
-                this.$store.commit('ADD_EVENT', this.event);
+                  this.$store.commit('EDIT_EVENT', this.event);
             },
             selectTime() {
                 this.endTimer = false;
